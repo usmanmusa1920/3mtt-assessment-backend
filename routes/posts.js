@@ -73,7 +73,7 @@ router.get("/:id", function (req, res) {
 //=================EDIT POST ROUTE=====================
 router.get("/:id/edit", middleware.checkPostOwnership, (req, res) => {
   Post.findById(req.params.id, (err, foundPost) => {
-    res.render("Posts/edit", { post: foundPost });
+    res.render("posts/edit", { post: foundPost });
   });
 });
 
@@ -84,7 +84,8 @@ router.put("/:id", middleware.checkPostOwnership, (req, res) => {
     if (err) {
       console.log(err);
     } else {
-      res.redirect("/posts/" + req.params.id);
+      // res.redirect("/posts/" + req.params.id);
+      res.render("posts/edit", { post: foundPost });
     }
   });
 });
